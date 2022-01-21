@@ -9,7 +9,8 @@ import functools
 import jwt
 
 # pylint: disable=import-error
-from flask import Flask, jsonify, request, abort
+from flask import Flask, jsonify, abort
+from flask import request
 
 
 JWT_SECRET = os.environ.get('JWT_SECRET', 'abc123abc1234')
@@ -67,6 +68,10 @@ def auth():
     """
     Create JWT token based on email.
     """
+    
+    print("\n\n\n")
+
+
     request_data = request.get_json()
     email = request_data.get('email')
     password = request_data.get('password')
